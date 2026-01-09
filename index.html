@@ -3,463 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tactical Zone - Airsoft Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Crispy Fried Catfish - Jagonya Lele Kriuk</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* --- 1. SETTING WARNA & RESET --- */
+        /* --- 1. CSS VARIABLES & RESET --- */
         :root {
-            --black-bg: #121212;
-            --black-card: #1e1e1e;
+            --primary: #d90429;      
+            --primary-dark: #b90524; 
+            --accent: #ffb703;       
+            --bg-color: #fffdf7;     
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
             --white: #ffffff;
-            --blue-accent: #004aad; /* Biru Taktikal */
-            --red-accent: #d32f2f;  /* Merah Agresif */
-            --gray-text: #b0b0b0;
+            --shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Nunito', sans-serif; scroll-behavior: smooth; }
+        
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        
+        h1, h2, h3, h4 { font-family: 'Fredoka One', cursive; letter-spacing: 0.5px; }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--black-bg);
-            color: var(--white);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- 2. NAVBAR --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(0, 0, 0, 0.9);
-            border-bottom: 2px solid var(--blue-accent);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.8rem;
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 4rem 0; }
+        
+        /* TOMBOL UMUM */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 700;
-            color: var(--white);
-        }
-        .logo span { color: var(--red-accent); }
-
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-weight: bold; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--red-accent); }
-
-        .cta-btn {
-            background-color: var(--blue-accent);
-            padding: 10px 25px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: 'Oswald', sans-serif;
-        }
-        .cta-btn:hover { background-color: var(--white); color: var(--black-bg); }
-
-        /* --- 3. HERO SECTION --- */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-bottom: 5px solid var(--red-accent);
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--gray-text);
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-btn {
-            padding: 15px 40px;
-            background-color: var(--red-accent);
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
+            transition: 0.3s;
             cursor: pointer;
-            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
-            transition: 0.3s;
-        }
-        .hero-btn:hover { background-color: var(--white); color: var(--red-accent); }
-
-        /* --- 4. CATALOG PRODUK --- */
-        .products { padding: 80px 5%; }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .section-line {
-            width: 80px;
-            height: 4px;
-            background: var(--blue-accent);
-            margin: 0 auto 50px auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: var(--black-card);
-            border: 1px solid #333;
-            transition: 0.3s;
+            border: none;
             position: relative;
             overflow: hidden;
         }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(217, 4, 41, 0.4); }
         
-        .card:hover { border-color: var(--red-accent); transform: translateY(-5px); }
+        .btn-accent { background: var(--accent); color: var(--text-dark); }
+        .btn-accent:hover { background: #ffca28; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 183, 3, 0.4); }
 
-        .card-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            background: #fff; /* Background putih agar produk terlihat jelas */
-        }
-
-        .card-info { padding: 20px; }
-        
-        .card-cat { color: var(--blue-accent); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        .card-title { font-size: 1.4rem; margin: 10px 0; }
-        .card-price { color: var(--red-accent); font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: block; }
-        
-        .btn-buy {
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-            font-weight: bold;
-            cursor: pointer;
+        /* --- 2. NAVBAR & SEARCH BAR --- */
+        nav {
+            background-color: var(--primary);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             transition: 0.3s;
         }
-        .btn-buy:hover { background: var(--white); color: var(--black-bg); }
 
-        /* --- 5. PARTNERSHIP / KERJA SAMA --- */
-        .partnership {
-            background: linear-gradient(45deg, #0d0d0d 50%, #151515 50%);
-            padding: 80px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            border-top: 2px solid var(--blue-accent);
+        .logo { 
+            color: var(--white); 
+            font-size: 1.8rem; 
+            text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+        }
+        
+        /* Animasi Ikon Logo Berdenyut */
+        .logo i {
+            animation: bounce 2s infinite;
         }
 
-        .partner-text { flex: 1; min-width: 300px; margin-right: 40px; }
-        .partner-text h2 { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
-        .partner-text span { color: var(--blue-accent); }
-        .partner-text p { color: var(--gray-text); margin-bottom: 30px; }
-
-        .partner-form {
-            flex: 1;
-            min-width: 300px;
-            background: var(--black-card);
-            padding: 30px;
-            border: 1px solid #333;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            background: #121212;
-            border: 1px solid #333;
-            color: white;
-            margin-bottom: 15px;
-            font-family: 'Roboto', sans-serif;
+        .search-box {
+            background: var(--white);
+            border-radius: 50px;
+            padding: 8px 20px;
+            display: flex; align-items: center;
+            width: 40%;
+            transition: 0.3s;
+            border: 2px solid transparent;
         }
-        input:focus, textarea:focus { border-color: var(--blue-accent); outline: none; }
+        .search-box:focus-within {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+        .search-box input { border: none; outline: none; width: 100%; font-size: 1rem; margin-left: 10px; color: var(--text-dark); }
+        .search-box i { color: var(--primary); }
 
-        /* --- 6. FOOTER --- */
-        footer {
-            background: #000;
-            padding: 40px 5%;
+        /* --- 3. HERO SECTION --- */
+        .hero {
             text-align: center;
-            border-top: 5px solid var(--red-accent);
+            padding: 8rem 1rem 6rem; /* Padding added */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect Sederhana */
+            color: var(--white);
+            position: relative;
         }
-        footer p { color: var(--gray-text); font-size: 0.9rem; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; color: var(--accent); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; font-weight: 600; margin-bottom: 2rem; }
 
-        /* --- 7. LIVE CHAT --- */
-        .chat-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--blue-accent);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
+        /* --- 4. STATS BAR --- */
+        .stats-bar {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 2rem 0;
+            margin-top: -30px;
+            position: relative;
+            border-radius: 10px;
+            z-index: 10;
+        }
+        .stats-grid { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 20px; }
+        .stat-item h3 { font-size: 2.5rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { font-weight: bold; color: var(--text-light); }
+
+        /* --- 5. ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
-            font-size: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 74, 173, 0.5);
-            z-index: 2000;
+        }
+        .about-img img { width: 100%; border-radius: 20px; box-shadow: var(--shadow); transition: transform 0.5s; }
+        .about-img img:hover { transform: scale(1.03) rotate(1deg); }
+        
+        .about-text h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 1rem; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .feature { display: flex; align-items: center; }
+        .feature i { color: var(--accent); margin-right: 8px; font-size: 1.2rem; }
+
+        /* --- 6. MENU GRID --- */
+        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; margin-bottom: 3rem; color: var(--text-light); }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            top: 0;
+        }
+        .card:hover { 
+            transform: translateY(-15px); 
+            border-color: var(--accent); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .card img { width: 100%; height: 230px; object-fit: cover; transition: transform 0.5s; }
+        .card:hover img { transform: scale(1.1); } /* Zoom effect gambar */
+        
+        .card-body { padding: 20px; text-align: center; background: white; position: relative; }
+        .card h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 5px; }
+        .card p { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+        .price { display: block; font-size: 1.3rem; font-weight: 800; color: var(--text-dark); margin-bottom: 15px; }
+        
+        /* --- 7. FRANCHISE --- */
+        .franchise-section {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 30px;
+            margin: 4rem 0;
+            text-align: center;
+            background-image: url('https://www.transparenttextures.com/patterns/food.png');
+            position: relative;
+            overflow: hidden;
+        }
+        /* Efek Shine pada background */
+        .franchise-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-25deg);
+            animation: shine 6s infinite;
+        }
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .franchise-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+        .franchise-content h2 { color: var(--accent); font-size: 2.5rem; margin-bottom: 1rem; }
+        .franchise-benefits { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+        
+        .benefit-item { 
+            background: rgba(255,255,255,0.1); 
+            padding: 20px; 
+            border-radius: 15px; 
+            flex: 1; 
+            min-width: 200px; 
             transition: 0.3s;
         }
-        .chat-btn:hover { transform: scale(1.1); background-color: var(--white); color: var(--blue-accent); }
+        .benefit-item:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+        .benefit-item i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
 
-        .chat-box {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 320px;
-            height: 400px;
-            background: var(--black-card);
-            border: 1px solid #333;
-            display: none;
-            flex-direction: column;
-            z-index: 2000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* --- 8. TESTIMONIALS --- */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testi-card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 15px; 
+            box-shadow: var(--shadow); 
+            position: relative;
+            transition: 0.3s; 
         }
+        .testi-card:hover { transform: translateY(-5px); }
+        .testi-card::before { content: "\201C"; font-size: 4rem; color: var(--accent); position: absolute; top: -10px; left: 20px; font-family: serif; opacity: 0.5; }
+        .stars { color: var(--accent); margin-bottom: 10px; }
+        .customer { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
+        .customer img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
 
-        .chat-header {
-            background: var(--blue-accent);
-            padding: 15px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .chat-content {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-
-        .msg { padding: 8px 12px; margin-bottom: 10px; border-radius: 5px; max-width: 80%; }
-        .bot { background: #333; color: white; }
-        .user { background: var(--red-accent); color: white; margin-left: auto; }
-
-        .chat-input-area {
-            display: flex;
-            border-top: 1px solid #333;
-        }
-        .chat-input-area input { margin: 0; border: none; }
-        .chat-input-area button {
-            background: var(--blue-accent);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        /* --- FOOTER --- */
+        footer { background: #1a1a1a; color: #ccc; padding-top: 4rem; margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding-bottom: 3rem; }
+        .footer-col h4 { color: white; font-size: 1.2rem; margin-bottom: 1.5rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #ccc; text-decoration: none; transition: 0.3s; display: inline-block; }
+        .footer-col ul li a:hover { color: var(--accent); padding-left: 8px; }
+        .social-icons a { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background: #333; color: white; border-radius: 50%; margin-right: 10px; transition: 0.3s; }
+        .social-icons a:hover { background: var(--primary); transform: rotate(360deg); }
+        .copyright { text-align: center; padding: 1.5rem; border-top: 1px solid #333; background: #111; font-size: 0.9rem; }
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; }
+            .search-box { width: 100%; }
             .hero h1 { font-size: 2.5rem; }
-            .partnership { flex-direction: column; }
-            .partner-text { margin-right: 0; margin-bottom: 30px; }
-            .nav-links { display: none; } /* Simpel hide untuk mobile */
+            .about-grid { grid-template-columns: 1fr; }
+            .stats-bar { margin-top: 0; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">TACTICAL<span>ZONE</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#catalog">ARSENAL</a></li>
-            <li><a href="#partner">JOIN SQUAD</a></li>
-        </ul>
-        <a href="#catalog" class="cta-btn">SHOP NOW</a>
+    <nav data-aos="fade-down" data-aos-duration="1000">
+        <a href="#" class="logo">
+            <i class="fas fa-drumstick-bite" style="color: var(--accent);"></i> Crispy Fried Catfish
+        </a>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Cari menu... (misal: pedas, Catfish)">
+        </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>DOMINATE THE FIELD</h1>
-            <p>Penyedia Airsoft Gun & Gear Taktikal Terlengkap. Kualitas Premium untuk performa maksimal di setiap skirmish.</p>
-            <button class="hero-btn" onclick="document.getElementById('catalog').scrollIntoView()">LIHAT KATALOG</button>
+    <header class="hero">
+        <div class="container">
+            <h1 data-aos="zoom-in" data-aos-duration="1200">KRISPINYA JUARA!</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Lele bumbu rempah rahasia 12 bumbu, digoreng dadakan.</p>
+            
+            <div data-aos="fade-up" data-aos-delay="400">
+                <a href="#menu-area" class="btn btn-primary">Lihat Menu</a>
+                <a href="#franchise" class="btn btn-accent">Jadi Mitra</a>
+            </div>
         </div>
-    </section>
+    </header>
 
-    <section id="catalog" class="products">
-        <h2 class="section-title">LATEST ARSENAL</h2>
-        <div class="section-line"></div>
-
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="M4 Airsoft Rifle" class="card-img">
-                <div class="card-info">
-                    <span class="card-cat">Assault Rifle</span>
-                    <h3 class="card-title">M4A1 Carbine Spec-Ops</h3>
-                    <span class="card-price">Rp 4.500.000</span>
-                    <button class="btn-buy" onclick="orderProduct('M4A1 Carbine Spec-Ops')">ORDER SEKARANG</button>
+    <div class="container">
+        <div class="stats-bar" data-aos="fade-up" data-aos-offset="-50">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="counter" data-target="50">0</h3>
+                    <p>Outlet Cabang</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="15000">0</h3>
+                    <p>Pelanggan Happy</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="12">0</h3>
+                    <p>Rempah Rahasia</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.8</h3>
+                    <p>Rating Google</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glock Airsoft Pistol" class="card-img">
-                <div class="card-info">
-                    <span class="card-cat">Handgun</span>
-                    <h3 class="card-title">Glock 19 Gen 4</h3>
-                    <span class="card-price">Rp 2.800.000</span>
-                    <button class="btn-buy" onclick="orderProduct('Glock 19 Gen 4')">ORDER SEKARANG</button>
-                </div>
+    <section class="section-padding">
+        <div class="container about-grid">
+            <div class="about-img" data-aos="fade-right" data-aos-duration="1000">
+                <img src="Gambar_5.webp" alt="Chef Memasak">
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1585562125509-0d2a45d07053?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sniper Rifle Airsoft" class="card-img">
-                <div class="card-info">
-                    <span class="card-cat">Sniper Rifle</span>
-                    <h3 class="card-title">L96 AWP Precision</h3>
-                    <span class="card-price">Rp 5.200.000</span>
-                    <button class="btn-buy" onclick="orderProduct('L96 AWP Precision')">ORDER SEKARANG</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1591490279646-6012c4819702?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="SMG Airsoft" class="card-img">
-                <div class="card-info">
-                    <span class="card-cat">SMG</span>
-                    <h3 class="card-title">MP5 Navy Seal</h3>
-                    <span class="card-price">Rp 3.900.000</span>
-                    <button class="btn-buy" onclick="orderProduct('MP5 Navy Seal')">ORDER SEKARANG</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1563725586617-64906f23b246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AK47 Airsoft" class="card-img">
-                <div class="card-info">
-                    <span class="card-cat">Assault Rifle</span>
-                    <h3 class="card-title">AK-47 Kalashnikov</h3>
-                    <span class="card-price">Rp 4.200.000</span>
-                    <button class="btn-buy" onclick="orderProduct('AK-47 Kalashnikov')">ORDER SEKARANG</button>
+            <div class="about-text" data-aos="fade-left" data-aos-duration="1000">
+                <h2>Kenapa             <i class="fas fa-drumstick-bite" style="color: var(--accent);"></i> Crispy Fried Catfish
+?</h2>
+                <p>Kami tidak sekadar menjual Crispr Fried Catfish. Kami menyajikan pengalaman makan Crispy Catfish yang sesungguhnya. Catfish kami direndam (marinasi) selama 24 jam agar bumbu meresap hingga ke tulang.</p>
+                <div class="about-features">
+                    <div class="feature"><i class="fas fa-check-circle"></i> Fish Segar Harian</div>
+                    <div class="feature"><i class="fas fa-check-circle"></i> Minyak Padat Premium</div>
+                    <div class="feature"><i class="fas fa-check-circle"></i> Sambal Bawang Asli</div>
+                    <div class="feature"><i class="fas fa-check-circle"></i> Sertifikasi Halal</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="partner" class="partnership">
-        <div class="partner-text">
-            <h2>GABUNG JADI <br><span>OFFICIAL DEALER</span></h2>
-            <p>Punya komunitas atau toko hobi? Bergabunglah dengan jaringan distribusi kami. Dapatkan harga khusus dealer dan support marketing eksklusif.</p>
-            <ul>
-                <li style="margin-bottom: 10px;">✅ Margin Keuntungan Besar</li>
-                <li style="margin-bottom: 10px;">✅ Prioritas Stok Barang</li>
-                <li style="margin-bottom: 10px;">✅ Support Sparepart</li>
-            </ul>
+    <section id="menu-area" class="section-padding" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Menu Favorit Kami</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Pilih menu andalan yang bikin harimu lebih semangat</p>
+            
+            <div class="menu-grid" id="menuContainer">
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="4.PNG" alt="Ayam Original">
+                    <div class="card-body">
+                        <h3>Original Crispy Fried Catfish</h3>
+                        <p>Kulit super renyah, daging juicy. Klasik tapi asik.</p>
+                        <span class="price">Rp 15.000</span>
+                        <a href="#" class="btn btn-primary" onclick="alert('Pesanan Original Chicken Diterima!')">Pesan</a>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="5.PNG" alt="crispy fried catfish Spicy">
+                    <div class="card-body">
+                        <h3>Spicy Fire catfish</h3>
+                        <p> crispy fried catfish saus pedas level 1-5. Berani coba?</p>
+                        <span class="price">Rp 22.000</span>
+                        <a href="#" class="btn btn-primary" onclick="alert('Pesanan Spicy Wings Diterima!')">Pesan</a>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="2.PNG" alt="Lele garing">
+                    <div class="card-body">
+                        <h3>Crispy Fried Catfish 3</h3>
+                        <p>Catfish tebal + selada segar + Sambal Geprek.</p>
+                        <span class="price">Rp 25.000</span>
+                        <a href="#" class="btn btn-primary" onclick="alert('Pesanan Burger Diterima!')">Pesan</a>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="3.PNG" alt="Lele crispy">
+                    <div class="card-body">
+                        <h3>Lele crispy</h3>
+                        <p>Cemilan ayam sekali  hap, enak buat nonton film.</p>
+                        <span class="price">Rp 12.000</span>
+                        <a href="#" class="btn btn-primary" onclick="alert('Pesanan Popcorn Chicken Diterima!')">Pesan</a>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="500">
+                    <img src="Capture1.PNG" alt="Paket Combo">
+                    <div class="card-body">
+                        <h3>Paket Combo Puas</h3>
+                        <p>1 Ayam + Nasi + Kentang + Es Teh Jumbo.</p>
+                        <span class="price">Rp 30.000</span>
+                        <a href="#" class="btn btn-primary" onclick="alert('Pesanan Paket Combo Diterima!')">Pesan</a>
+                    </div>
+                </div>
+
+                <div id="no-result" style="display:none; text-align:center; grid-column:1/-1;">
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 10px; color:#ccc;"></i>
+                    <p>Yah, menu yang kamu cari tidak ditemukan :(</p>
+                </div>
+
+            </div>
         </div>
-        <div class="partner-form">
-            <h3 style="margin-bottom: 20px;">Formulir Mitra</h3>
-            <form id="collabForm">
-                <input type="text" placeholder="Nama Lengkap / Toko" required>
-                <input type="tel" placeholder="Nomor WhatsApp" required>
-                <textarea rows="3" placeholder="Ceritakan rencana bisnis Anda..."></textarea>
-                <button type="submit" class="hero-btn" style="width: 100%; font-size: 1rem;">KIRIM PROPOSAL</button>
-            </form>
+    </section>
+
+    <div id="franchise" class="container">
+        <div class="franchise-section" data-aos="zoom-in-up">
+            <div class="franchise-content">
+                <h2>Ingin Punya Bisnis Sendiri?</h2>
+                <p>Bergabunglah menjadi mitra Chicken Crush. Sistem teruji, modal terjangkau, dan balik modal (BEP) cepat.</p>
+                
+                <div class="franchise-benefits">
+                    <div class="benefit-item" data-aos="flip-left" data-aos-delay="100">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Profit Tinggi</h4>
+                        <p>Margin keuntungan produk s/d 40%</p>
+                    </div>
+                    <div class="benefit-item" data-aos="flip-left" data-aos-delay="300">
+                        <i class="fas fa-users-cog"></i>
+                        <h4>Support Pusat</h4>
+                        <p>Training & Marketing dibantu</p>
+                    </div>
+                    <div class="benefit-item" data-aos="flip-left" data-aos-delay="500">
+                        <i class="fas fa-store"></i>
+                        <h4>Desain Outlet</h4>
+                        <p>Konsep modern & kekinian</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/6281930116494?text=Halo%20saya%20tertarik%20kemitraan" target="_blank" class="btn btn-accent btn-lg" data-aos="pulse" data-aos-iteration="infinite">
+                    <i class="fab fa-whatsapp"></i> Hubungi Tim Franchise
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-down">Kata Mereka</h2>
+            <div class="testimonial-grid">
+                <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Ayamnya beneran crunchy banget! Sambalnya pedes nampol tapi bikin nagih. Fix bakal langganan terus."</p>
+                    <div class="customer">
+                        <img src="Gambar_2.jpeg" alt="User">
+                        <div>
+                            <strong>Sari Septiana Dewi</strong><br>
+                            <small>Food Blogger</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Paling suka sama burgernya, daging ayamnya tebel gak pelit. Pelayanan juga ramah dan cepat."</p>
+                    <div class="customer">
+                        <img src="Gambar_1.jpeg" alt="User">
+                        <div>
+                            <strong>Eka Prima Fitriani</strong><br>
+                            <small>Ibu Rumah Tangga</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Saya join kemitraan tahun lalu, alhamdulillah BEP dalam 8 bulan. Support pusat sangat membantu operasional."</p>
+                    <div class="customer">
+                        <img src="Gambar_4.jpeg" alt="User">
+                        <div>
+                            <strong>Andi Wijaya</strong><br>
+                            <small>Mitra Cabang Jogja</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 20px;">TACTICAL<span>ZONE</span></div>
-        <p>⚠️ Produk hanya untuk olahraga dan hobi (18+). Penyalahgunaan di luar tanggung jawab kami.</p>
-        <p>&copy; 2024 Tactical Zone Indonesia. All Rights Reserved.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="color:var(--accent); margin-bottom:1rem; font-family:'Fredoka One'">Chicken Crush</h3>
+                    <p>Menyajikan kebahagiaan di setiap gigitan ayam krispi. Halal, Enak, dan Hemat.</p>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#menu-area">Menu</a></li>
+                        <li><a href="#franchise">Peluang Usaha</a></li>
+                        <li><a href="#">Lokasi Outlet</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Kontak Kami</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Prapatan No. 88, Balikpapan Kota</li>
+                        <li><i class="fas fa-phone"></i> +62 81930116494</li>
+                        <li><i class="fas fa-envelope"></i> info@Crispy fried Catfish.com</li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up" data-aos-delay="400">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Crispy Fried Catfish Indonesia. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <div class="chat-btn" onclick="toggleChat()">💬</div>
-    
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            <span>Admin Support</span>
-            <span style="cursor: pointer;" onclick="toggleChat()">✖</span>
-        </div>
-        <div class="chat-content" id="chatContent">
-            <div class="msg bot">Selamat datang, Commander! Ada unit yang sedang dicari?</div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Ketik pesan..." onkeypress="handleEnter(event)">
-            <button onclick="sendMessage()">➤</button>
-        </div>
-    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            once: true, // Animasi hanya terjadi sekali saat scroll ke bawah
+            offset: 100, // Jarak trigger animasi
+            duration: 800, // Durasi animasi dalam milidetik
+        });
+    </script>
 
     <script>
-        // 1. ORDER VIA WHATSAPP
-        function orderProduct(productName) {
-            const phone = "6281234567890"; // Ganti dengan nomor WA Admin
-            const text = `Halo Admin Tactical Zone, saya tertarik untuk membeli unit: *${productName}*. Bagaimana cara pembayarannya?`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-        }
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.card');
+        const noResult = document.getElementById('no-result');
 
-        // 2. LOGIKA LIVE CHAT
-        const chatBox = document.getElementById('chatBox');
-        
-        function toggleChat() {
-            chatBox.style.display = (chatBox.style.display === 'flex') ? 'none' : 'flex';
-        }
+        searchInput.addEventListener('keyup', function(e) {
+            const term = e.target.value.toLowerCase();
+            let hasResult = false;
 
-        function handleEnter(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const content = document.getElementById('chatContent');
-            const text = input.value;
-
-            if(text.trim() === "") return;
-
-            // Tambah pesan user
-            const userDiv = document.createElement('div');
-            userDiv.className = 'msg user';
-            userDiv.innerText = text;
-            content.appendChild(userDiv);
-
-            input.value = "";
-            content.scrollTop = content.scrollHeight;
-
-            // Auto reply sederhana
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.className = 'msg bot';
-                botDiv.innerText = "Terima kasih infonya. Tim sales kami akan segera membalas via Chat ini atau WhatsApp.";
-                content.appendChild(botDiv);
-                content.scrollTop = content.scrollHeight;
-            }, 1000);
-        }
-
-        // 3. FORM PARTNERSHIP
-        document.getElementById('collabForm').addEventListener('submit', function(e){
-            e.preventDefault();
-            alert("Proposal Terkirim! Kami akan menghubungi Anda dalam 1x24 Jam.");
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+                if(title.includes(term) || desc.includes(term)) {
+                    card.style.display = "block";
+                    hasResult = true;
+                    // Reset animasi saat pencarian agar muncul kembali
+                    card.classList.remove('aos-animate');
+                    setTimeout(() => card.classList.add('aos-animate'), 50);
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            noResult.style.display = hasResult ? "none" : "block";
         });
+
+        // 3. SCRIPT UNTUK ANIMASI ANGKA (COUNTER)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Semakin kecil semakin cepat
+
+        // Fungsi agar counter jalan saat discroll ke area stats
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        // Formatting angka (15000 jadi 15k+)
+                        if(target >= 1000) {
+                            counter.innerText = (target / 1000) + 'K+';
+                        } else {
+                            counter.innerText = target + '+';
+                        }
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counter hanya ketika elemen terlihat
+        let hasCounted = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-bar');
+            const sectionPos = statsSection.getBoundingClientRect().top;
+            const screenPos = window.innerHeight / 1.3;
+
+            if(sectionPos < screenPos && !hasCounted) {
+                animateCounters();
+                hasCounted = true;
+            }
+        });
+
+    </script>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/YOUR_ID_HERE/DEFAULT';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
 </body>
 </html>
